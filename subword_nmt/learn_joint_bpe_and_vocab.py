@@ -124,8 +124,8 @@ def learn_joint_bpe_and_vocab(args):
 
         output_dict = {}
         for i, (key, freq) in enumerate(sorted(vocab.items(), key=lambda x: x[1], reverse=True)):
-            entry = key.replace('@@', ' ')
-            output_dict[entry] = i
+        #    entry = key.replace('@@', ' ')
+            output_dict[key] = i
         print(output_dict)
 
         with open(args.vocab_output.name, 'w') as file:
