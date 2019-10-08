@@ -209,7 +209,11 @@ def learn_bpe(infile, outfile, num_symbols, min_frequency=2, verbose=False, is_d
     outfile.write('#version: 0.2\n')
 
     vocab = get_vocabulary(infile, is_dict)
-    vocab = dict([(tuple(x[:-1])+(x[-1]+'</w>',) ,y) for (x,y) in vocab.items()])
+    # this line adds the word final characters to the vocab counts
+ #   vocab = dict([(tuple(x[:-1])+(x[-1]+'</w>',) ,y) for (x,y) in vocab.items()])
+    # changed this to encode a word initial space instead
+    word_initial_space = "\u0120"
+    vocab = dict([(tuple(word_initial_space + x), y) for (x, y) in vocab.items()])
     sorted_vocab = sorted(vocab.items(), key=lambda x: x[1], reverse=True)
 
     stats, indices = get_pair_statistics(sorted_vocab)

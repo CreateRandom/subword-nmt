@@ -67,7 +67,7 @@ def create_parser(subparsers=None):
         '--symbols', '-s', type=int, default=10000,
         help="Create this many new symbols (each representing a character n-gram) (default: %(default)s))")
     parser.add_argument(
-        '--separator', type=str, default='@@', metavar='STR',
+        '--separator', type=str, default='', metavar='STR',
         help="Separator between non-final subword units (default: '%(default)s'))")
 
     parser.add_argument(

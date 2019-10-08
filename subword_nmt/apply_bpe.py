@@ -101,9 +101,12 @@ class BPE(object):
                                           self.version,
                                           self.cache,
                                           self.glossaries)]
-
+            # this is where the word-internal separator token gets added
             for item in new_word[:-1]:
                 output.append(item + self.separator)
+            # try adding the word initial space here
+            word_initial_space = "\u0120"
+            new_word[0] = word_initial_space + new_word[0]
             output.append(new_word[-1])
 
         return output
